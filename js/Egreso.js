@@ -4,4 +4,7 @@ class Egreso extends Dato{
         super(descripcion,valor);
         this._id = ++Egreso.contadorEgresos;
     }
+    get id(){
+        return this._id;
+    }
 }
