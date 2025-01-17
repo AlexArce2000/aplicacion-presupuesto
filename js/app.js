@@ -1,11 +1,11 @@
 const ingresos = [
-    new Ingreso("Salario",2100.00),
+    new Ingreso("Salario",21000000),
     new Ingreso("Venta Coche",1500.00)
 ];
 
 const egresos = [
-    new Egreso('Renta departamento',900),
-    new Egreso('Ropa', 400)
+    new Egreso('Renta departamento',90000),
+    new Egreso('Ropa', 400000)
 ]
 
 let cargarApp = ()=>{
@@ -108,4 +108,23 @@ let eliminarEgreso = (id)=>{
     egresos.splice(indiceEliminar,1);
     cargarCabecero();
     cargarEgresos();
+}
+
+let agregarDato=()=>{
+    let forma = document.forms['forma'];
+    let tipo = forma.tipo;
+    let descripcion = forma.descripcion;
+    let valor = forma.valor;
+    if (descripcion.value !== '' && valor.value !== '') {
+        if(tipo.value === 'ingreso'){
+            ingresos.push(new Ingreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarIngresos();
+
+        }else if (tipo.value === 'egreso') {
+            egresos.push(new Egreso(descripcion.value, +valor.value));
+            cargarCabecero();
+            cargarEgresos();
+        }   
+    }
 }
